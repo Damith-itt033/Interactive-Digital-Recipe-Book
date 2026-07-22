@@ -1,0 +1,178 @@
+/* Savory Share (Feastify) Wireframe Design System */
+:root {
+  --primary-amber: #f59e0b;
+  --primary-amber-hover: #d97706;
+  --dark-navy: #0f172a;
+  --card-bg-navy: #1e293b;
+  --bg-cream: #fdfbf7;
+  --text-dark: #1e293b;
+  --text-muted: #64748b;
+  --border-light: #e2e8f0;
+  --badge-light: #f1f5f9;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: var(--bg-cream);
+  color: var(--text-dark);
+  margin: 0;
+  padding: 0;
+}
+
+/* Header & Navbar */
+.navbar-brand-custom {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 1.35rem;
+  color: var(--dark-navy);
+  text-decoration: none;
+}
+
+.brand-badge {
+  background: var(--primary-amber);
+  color: #fff;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+}
+
+.nav-link-custom {
+  font-weight: 500;
+  color: #475569;
+  text-decoration: none;
+  padding: 6px 14px;
+  border-radius: 20px;
+  transition: all 0.2s ease;
+}
+
+.nav-link-custom:hover, .nav-link-custom.active {
+  color: var(--primary-amber-hover);
+  background: #fef3c7;
+}
+
+.btn-amber {
+  background-color: var(--primary-amber);
+  color: #ffffff;
+  border-radius: 20px;
+  padding: 8px 20px;
+  font-weight: 600;
+  border: none;
+  transition: background 0.2s ease;
+}
+
+.btn-amber:hover {
+  background-color: var(--primary-amber-hover);
+  color: #ffffff;
+}
+
+/* Wireframe Hero Card */
+.hero-card-navy {
+  background-color: var(--card-bg-navy);
+  color: #ffffff;
+  border-radius: 20px;
+  padding: 40px;
+  position: relative;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.15);
+}
+
+.hero-tag {
+  background: rgba(245, 158, 11, 0.2);
+  color: #fbbf24;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 6px 12px;
+  border-radius: 12px;
+  display: inline-block;
+}
+
+.hero-title {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-weight: 700;
+  font-size: 2.5rem;
+  line-height: 1.2;
+}
+
+.hero-meta-badge {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 6px 14px;
+  border-radius: 16px;
+  font-size: 0.85rem;
+  color: #cbd5e1;
+}
+
+/* Recipe Cards */
+.recipe-card {
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid var(--border-light);
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.recipe-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.06);
+}
+
+.recipe-card-img {
+  height: 180px;
+  object-fit: cover;
+  width: 100%;
+  background: #e2e8f0;
+}
+
+.meal-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 4px 8px;
+  border-radius: 6px;
+  letter-spacing: 0.5px;
+}
+
+.badge-breakfast { background: #dcfce7; color: #166534; }
+.badge-lunch { background: #feefc7; color: #92400e; }
+.badge-dinner { background: #e0e7ff; color: #3730a3; }
+.badge-dessert { background: #fce7f3; color: #9d174d; }
+
+.filter-pill {
+  border-radius: 20px;
+  padding: 6px 18px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: 1px solid var(--border-light);
+  background: #ffffff;
+  color: var(--text-dark);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filter-pill.active, .filter-pill:hover {
+  background: var(--primary-amber);
+  color: #ffffff;
+  border-color: var(--primary-amber);
+}
+
+/* Form Container */
+.form-wireframe-box {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 35px;
+  border: 1px solid var(--border-light);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+}
+
+.wireframe-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #64748b;
+  letter-spacing: 0.5px;
+}
