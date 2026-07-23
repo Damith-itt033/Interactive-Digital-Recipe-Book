@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Savory Share - Recipe Directory Wireframe (Phase 1)</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/wireframe.css">
+</head>
+<body>
+
+  <!-- Top Navbar -->
+  <nav class="navbar navbar-expand-lg bg-white border-bottom py-3 sticky-top">
+    <div class="container">
+      <a class="navbar-brand-custom" href="index_wireframe.html">
+        <span class="brand-badge">S</span>
+        <div>
+          <div class="lh-1">Savory Share</div>
+          <small class="text-muted fs-7 font-monospace">ICT1209 Web Project</small>
+        </div>
+      </a>
+
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav mx-auto gap-1">
+          <li class="nav-item"><a class="nav-link-custom" href="index_wireframe.html"><i class="fa-solid fa-compass me-1"></i> Discover</a></li>
+          <li class="nav-item"><a class="nav-link-custom active" href="dashboard_wireframe.html"><i class="fa-solid fa-utensils me-1"></i> Browse Recipes</a></li>
+          <li class="nav-item"><a class="nav-link-custom" href="contact_wireframe.html"><i class="fa-solid fa-envelope me-1"></i> Contact Us</a></li>
+        </ul>
+        <div class="d-flex align-items-center gap-2">
+          <a href="../auth/login.php" class="btn btn-outline-secondary rounded-pill px-3">Login</a>
+          <a href="../auth/register.php" class="btn btn-amber">Share Recipe</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container my-5">
+    <div class="d-flex justify-content-between align-items-end mb-4">
+      <div>
+        <h2 class="fw-bold m-0">Full Recipe Directory</h2>
+        <p class="text-muted m-0">Multi-criteria filtering and detailed views. Find perfect meals matching your exact preferences.</p>
+      </div>
+      <span class="badge bg-light text-dark border px-3 py-2 rounded-pill"><i class="fa-solid fa-layer-group me-1 text-warning"></i> Found 4 Recipes</span>
+    </div>
+
+    <div class="row g-4">
+      <!-- Sidebar Filters Block -->
+      <div class="col-lg-3">
+        <div class="bg-white p-4 rounded-4 border">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h6 class="fw-bold m-0"><i class="fa-solid fa-sliders me-2 text-warning"></i>Filters</h6>
+            <a href="#" class="text-decoration-none text-muted fs-7">Reset All</a>
+          </div>
+
+          <div class="mb-4">
+            <label class="wireframe-label mb-2">Meal Time</label>
+            <div class="form-check fs-7 mb-1">
+              <input class="form-check-input" type="checkbox" id="chkBreakfast">
+              <label class="form-check-label" for="chkBreakfast">Breakfast</label>
+            </div>
+            <div class="form-check fs-7 mb-1">
+              <input class="form-check-input" type="checkbox" id="chkLunch">
+              <label class="form-check-label" for="chkLunch">Lunch</label>
+            </div>
+            <div class="form-check fs-7 mb-1">
+              <input class="form-check-input" type="checkbox" id="chkDinner">
+              <label class="form-check-label" for="chkDinner">Dinner</label>
+            </div>
+            <div class="form-check fs-7">
+              <input class="form-check-input" type="checkbox" id="chkDessert">
+              <label class="form-check-label" for="chkDessert">Dessert</label>
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <label class="wireframe-label mb-2">Cooking Time</label>
+            <select class="form-select form-select-sm rounded-3 fs-7">
+              <option selected>Any Time</option>
+              <option value="15">Under 15 Mins</option>
+              <option value="30">Under 30 Mins</option>
+              <option value="60">Under 60 Mins</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="wireframe-label mb-2">Dietary Restrictions</label>
+            <div class="form-check fs-7 mb-1">
+              <input class="form-check-input" type="checkbox" id="chkVeg">
+              <label class="form-check-label" for="chkVeg">Vegetarian</label>
+            </div>
+            <div class="form-check fs-7">
+              <input class="form-check-input" type="checkbox" id="chkGluten">
+              <label class="form-check-label" for="chkGluten">Gluten-Free</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Directory Content Block -->
+      <div class="col-lg-9">
+        <!-- Live Search Bar -->
+        <div class="input-group mb-4 shadow-sm rounded-pill overflow-hidden border">
+          <span class="input-group-text bg-white border-0 ps-3 text-muted"><i class="fa-solid fa-magnifying-glass"></i></span>
+          <input type="text" class="form-control border-0 shadow-none fs-6" placeholder="Filter current view by key terms...">
+        </div>
+
+        <!-- Recipe Matrix Grid -->
+        <div class="row g-4">
+          <!-- Item 1 -->
+          <div class="col-md-6 col-xl-4">
+            <div class="recipe-card h-100">
+              <div class="position-relative">
+                <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=600&q=80" class="recipe-card-img" alt="Ramen">
+                <span class="position-absolute top-0 start-0 m-3 meal-badge badge-lunch">LUNCH</span>
+              </div>
+              <div class="p-3">
+                <div class="d-flex align-items-center text-warning fs-7 mb-1">
+                  <i class="fa-solid fa-star me-1"></i> 4.8 <span class="text-muted ms-1">(120)</span>
+                </div>
+                <h6 class="fw-bold mb-2">Ultimate Homemade Ramen</h6>
+                <p class="text-muted fs-7 mb-3">Traditional Japanese rich tonkotsu ramen styled broth layered with spring onions...</p>
+                <div class="d-flex justify-content-between align-items-center pt-2 border-top fs-7 text-muted">
+                  <span><i class="fa-regular fa-clock me-1"></i> 25 Mins</span>
+                  <a href="#" class="text-decoration-none fw-semibold text-warning">Cook Recipe &rarr;</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="col-md-6 col-xl-4">
+            <div class="recipe-card h-100">
+              <div class="position-relative">
+                <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=600&q=80" class="recipe-card-img" alt="Salad">
+                <span class="position-absolute top-0 start-0 m-3 meal-badge badge-breakfast">BREAKFAST</span>
+              </div>
+              <div class="p-3">
+                <div class="d-flex align-items-center text-warning fs-7 mb-1">
+                  <i class="fa-solid fa-star me-1"></i> 5.0 <span class="text-muted ms-1">(84)</span>
+                </div>
+                <h6 class="fw-bold mb-2">Fresh Garden Avocado Salad</h6>
+                <p class="text-muted fs-7 mb-3">Bright and highly nutritious keto vegetarian breakfast bowl...</p>
+                <div class="d-flex justify-content-between align-items-center pt-2 border-top fs-7 text-muted">
+                  <span><i class="fa-regular fa-clock me-1"></i> 10 Mins</span>
+                  <a href="#" class="text-decoration-none fw-semibold text-warning">Cook Recipe &rarr;</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="col-md-6 col-xl-4">
+            <div class="recipe-card h-100">
+              <div class="position-relative">
+                <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=600&q=80" class="recipe-card-img" alt="Souffle">
+                <span class="position-absolute top-0 start-0 m-3 meal-badge badge-dessert">DESSERT</span>
+              </div>
+              <div class="p-3">
+                <div class="d-flex align-items-center text-warning fs-7 mb-1">
+                  <i class="fa-solid fa-star me-1"></i> 5.0 <span class="text-muted ms-1">(45)</span>
+                </div>
+                <h6 class="fw-bold mb-2">Chocolate Lava Soufflé</h6>
+                <p class="text-muted fs-7 mb-3">A decadent rich cocoa lava cake with a beautifully molten warm center...</p>
+                <div class="d-flex justify-content-between align-items-center pt-2 border-top fs-7 text-muted">
+                  <span><i class="fa-regular fa-clock me-1"></i> 30 Mins</span>
+                  <a href="#" class="text-decoration-none fw-semibold text-warning">Cook Recipe &rarr;</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="bg-white border-top py-4 mt-5">
+    <div class="container text-center text-muted fs-7">
+      <p class="mb-1">Savory Share (Feastify) &copy; 2026 — ICT 1209 Web Technologies Mini Project</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
