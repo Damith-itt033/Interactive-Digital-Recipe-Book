@@ -12,3 +12,16 @@ function sanitize_input($data) {
 }
 
 /**
+ * Check if the current user is logged in.
+ */
+function is_logged_in() {
+    return isset($_SESSION['user_id']);
+}
+
+/**
+ * Validate an email address format.
+ */
+function is_valid_email($email) {
+    return filter_var($email, FILTER_VALIDATE_EMAIL) !== false;
+}
+?>
