@@ -33,3 +33,36 @@ INSERT INTO `categories` (`name`, `slug`, `icon`) VALUES
 ('Dessert', 'dessert', 'fa-solid fa-ice-cream'),
 ('Vegetarian', 'vegetarian', 'fa-solid fa-leaf')
 ON DUPLICATE KEY UPDATE name=name;
+
+-- --------------------------------------------------------
+-- Table structure for `recipes`
+-- --------------------------------------------------------
+CREATE TABLE IF NOT EXISTS `recipes` (
+  `id` INT AUTO_INCREMENT PRIMARY KEY,
+  `user_id` INT NOT NULL,
+  `category_id` INT NOT NULL,
+  `title` VARCHAR(255) NOT NULL,
+  `instructions` TEXT NOT NULL,
+  `ingredients` TEXT NOT NULL,
+  `prep_time` INT NOT NULL COMMENT 'in minutes',
+  `cook_time` INT NOT NULL COMMENT 'in minutes',
+  `servings` INT NOT NULL,
+  `difficulty` ENUM('Easy', 'Medium', 'Hard') DEFAULT 'Medium',
+  `image_url` VARCHAR(255) DEFAULT 'assets/placeholder.jpg',
+  `calories` INT DEFAULT 0,
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON DELETE CASCADE,
+  FOREIGN KEY (`category_id`) REFERENCES `categories`(`id`) ON DELETE RESTRICT
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+-- Table structure for `messages`
+-- --------------------------------------------------------
+CREATE TABLE IF NOT EXISTS `messages` (
+  `id` INT AUTO_INCREMENT PRIMARY KEY,
+  `name` VARCHAR(100) NOT NULL,
+  `email` VARCHAR(100) NOT NULL,
+  `category` VARCHAR(50) NOT NULL,
+  `message` TEXT NOT NULL,
+  `submitted_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
