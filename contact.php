@@ -92,3 +92,48 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
               <?= htmlspecialchars($msg) ?>
             </div>
           <?php endif; ?>
+
+          <form action="contact.php" method="POST">
+            <div class="row g-3 mb-3">
+              <div class="col-md-6">
+                <label for="txtName" class="wireframe-label mb-1">Your Full Name <span class="text-danger">*</span></label>
+                <input type="text" name="name" id="txtName" class="form-control rounded-3" placeholder="e.g. Damith Dissanayaka" required value="<?= isset($_SESSION['user_name']) ? htmlspecialchars($_SESSION['user_name']) : '' ?>">
+              </div>
+              <div class="col-md-6">
+                <label for="txtEmail" class="wireframe-label mb-1">Email Address <span class="text-danger">*</span></label>
+                <input type="email" name="email" id="txtEmail" class="form-control rounded-3" placeholder="e.g. damith@example.com" required>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="selCategory" class="wireframe-label mb-1">Inquiry Category</label>
+              <select name="category" id="selCategory" class="form-select rounded-3">
+                <option value="general">General Question</option>
+                <option value="recipe">Recipe Submission Help</option>
+                <option value="technical">Technical Issue / Bug</option>
+                <option value="feedback">Feedback &amp; Suggestions</option>
+              </select>
+            </div>
+
+            <div class="mb-4">
+              <label for="txtMessage" class="wireframe-label mb-1">Your Message <span class="text-danger">*</span></label>
+              <textarea name="message" id="txtMessage" class="form-control rounded-3" rows="5" placeholder="Write your detailed query or message here..." required></textarea>
+              <div class="form-text fs-7 text-muted mt-1"><i class="fa-solid fa-circle-info me-1 text-warning"></i> This form will submit to MySQL database via PHP Backend.</div>
+            </div>
+
+            <button type="submit" class="btn btn-amber btn-lg w-100 py-3 rounded-3 fw-bold fs-6"><i class="fa-solid fa-paper-plane me-2"></i>Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="bg-white border-top py-4 mt-5">
+    <div class="container text-center text-muted fs-7">
+      <p class="mb-1">Savory Share (Feastify) &copy; 2026 — ICT 1209 Web Technologies Mini Project</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
