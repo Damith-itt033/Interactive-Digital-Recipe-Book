@@ -94,3 +94,51 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <a href="submit-recipe.php" class="btn btn-amber me-2"><i class="fa-solid fa-pen-nib me-1"></i> Share Recipe</a>
             <span class="me-3 fw-bold text-dark"><i class="fa-solid fa-user-circle me-1"></i> <?= htmlspecialchars($_SESSION['user_name']) ?></span>
             <a href="auth/logout.php" class="btn btn-outline-danger rounded-pill px-3">Logout</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container my-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="text-center mb-4">
+          <h2 class="fw-bold">Share Your Recipe</h2>
+          <p class="text-muted">Fill out the details below to add your delicious creation to the directory.</p>
+        </div>
+
+        <div class="form-wireframe-box p-4 bg-white rounded-4 border shadow-sm">
+          <?php if ($msg): ?>
+            <div class="alert alert-<?= $msgType ?> py-3 rounded-3 mb-4">
+              <i class="fa-solid fa-circle-<?= $msgType === 'success' ? 'check' : 'exclamation' ?> me-2"></i>
+              <?= htmlspecialchars($msg) ?>
+            </div>
+          <?php endif; ?>
+
+          <form action="submit-recipe.php" method="POST" enctype="multipart/form-data">
+            <div class="mb-3">
+              <label class="wireframe-label mb-1">Recipe Title <span class="text-danger">*</span></label>
+              <input type="text" name="title" class="form-control rounded-3" placeholder="e.g. Creamy Mushroom Pasta" required>
+            </div>
+
+            <div class="mb-3">
+              <label class="wireframe-label mb-1">Category <span class="text-danger">*</span></label>
+              <select name="category_id" class="form-select rounded-3" required>
+                <option value="">Select Category...</option>
+                <?php
+                $catStmt = $pdo->query("SELECT id, name FROM categories ORDER BY name ASC");
+                while ($c = $catStmt->fetch()) {
+                    echo '<option value="' . $c['id'] . '">' . htmlspecialchars($c['name']) . '</option>';
+                }
+                ?>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label class="wireframe-label mb-1">Recipe Image <span class="text-muted">(Optional)</span></label>
+              <input type="file" name="image" class="form-control rounded-3" accept="image/*">
+            </div>
+
+            <div class="mb-3">
+              <label class="wireframe-label mb-1">Ingredients <span class="text-danger">*</span></label>
+              <textarea name="ingredients" class="form-control rounded-3" rows="4" placeholder="List the ingredients (e.g., 1 cup flour, 2 eggs)..." required></textarea>
