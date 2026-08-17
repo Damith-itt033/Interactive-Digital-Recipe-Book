@@ -61,3 +61,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="mb-3">
                 <label class="wireframe-label mb-1">Username</label>
                 <input type="text" name="username" class="form-control rounded-3" placeholder="e.g. John Doe" required>
+              </div>
+            <div class="mb-3">
+              <label class="form-label">Email Address</label>
+              <input type="email" name="email" class="form-control" required>
+            </div>
+            <div class="mb-4">
+              <label class="form-label">Password</label>
+              <input type="password" name="password" class="form-control" required minlength="6">
+            </div>
+            <button type="submit" class="btn btn-amber w-100 py-2 fw-bold">Register</button>
+          </form>
+          <div class="text-center mt-3">
+            <small>Already have an account? <a href="login.php" class="text-decoration-none">Login here</a></small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
