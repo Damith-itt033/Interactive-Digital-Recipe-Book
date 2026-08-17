@@ -142,3 +142,49 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="mb-3">
               <label class="wireframe-label mb-1">Ingredients <span class="text-danger">*</span></label>
               <textarea name="ingredients" class="form-control rounded-3" rows="4" placeholder="List the ingredients (e.g., 1 cup flour, 2 eggs)..." required></textarea>
+            </div>
+
+            <div class="mb-3">
+              <label class="wireframe-label mb-1">Instructions <span class="text-danger">*</span></label>
+              <textarea name="instructions" class="form-control rounded-3" rows="5" placeholder="Write step-by-step instructions..." required></textarea>
+            </div>
+
+            <div class="row g-3 mb-4">
+              <div class="col-md-3">
+                <label class="wireframe-label mb-1">Prep Time (mins)</label>
+                <input type="number" name="prep_time" class="form-control rounded-3" value="15" min="0">
+              </div>
+              <div class="col-md-3">
+                <label class="wireframe-label mb-1">Cook Time (mins)</label>
+                <input type="number" name="cook_time" class="form-control rounded-3" value="20" min="0">
+              </div>
+              <div class="col-md-3">
+                <label class="wireframe-label mb-1">Servings</label>
+                <input type="number" name="servings" class="form-control rounded-3" value="2" min="1">
+              </div>
+              <div class="col-md-3">
+                <label class="wireframe-label mb-1">Difficulty</label>
+                <select name="difficulty" class="form-select rounded-3">
+                  <option value="Easy">Easy</option>
+                  <option value="Medium" selected>Medium</option>
+                  <option value="Hard">Hard</option>
+                </select>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-amber btn-lg w-100 py-3 rounded-3 fw-bold fs-6"><i class="fa-solid fa-plus-circle me-2"></i>Publish Recipe</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="bg-white border-top py-4 mt-5">
+    <div class="container text-center text-muted fs-7">
+      <p class="mb-1">Savory Share (Feastify) &copy; 2026 — ICT 1209 Web Technologies Mini Project</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
