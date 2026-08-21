@@ -111,3 +111,60 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <div class="collapse navbar-collapse" id="navMenu">
         <ul class="navbar-nav mx-auto gap-1">
           <li class="nav-item"><a class="nav-link-custom" href="index.php"><i class="fa-solid fa-compass me-1"></i> Discover</a></li>
+          <li class="nav-item"><a class="nav-link-custom" href="dashboard.php"><i class="fa-solid fa-utensils me-1"></i> Browse Recipes</a></li>
+          <li class="nav-item"><a class="nav-link-custom" href="contact.php"><i class="fa-solid fa-envelope me-1"></i> Contact Us</a></li>
+        </ul>
+        <div class="d-flex align-items-center gap-2">
+            <a href="submit-recipe.php" class="btn btn-amber me-2"><i class="fa-solid fa-pen-nib me-1"></i> Share Recipe</a>
+            <span class="me-3 fw-bold text-dark"><i class="fa-solid fa-user-circle me-1"></i> <?= htmlspecialchars($_SESSION['user_name']) ?></span>
+            <a href="auth/logout.php" class="btn btn-outline-danger rounded-pill px-3">Logout</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container my-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="text-center mb-4">
+          <h2 class="fw-bold">Edit Your Recipe</h2>
+          <p class="text-muted">Update the details below to save your changes.</p>
+        </div>
+
+        <div class="form-wireframe-box p-4 bg-white rounded-4 border shadow-sm">
+          <?php if ($msg): ?>
+            <div class="alert alert-<?= $msgType ?> py-3 rounded-3 mb-4">
+              <i class="fa-solid fa-circle-<?= $msgType === 'success' ? 'check' : 'exclamation' ?> me-2"></i>
+              <?= htmlspecialchars($msg) ?>
+            </div>
+          <?php endif; ?>
+
+          <form action="edit-recipe.php?id=<?= $recipe_id ?>" method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="id" value="<?= $recipe_id ?>">
+            
+            <div class="mb-3">
+              <label class="wireframe-label mb-1">Recipe Title <span class="text-danger">*</span></label>
+              <input type="text" name="title" class="form-control rounded-3" value="<?= htmlspecialchars($recipe['title']) ?>" required>
+            </div>
+
+            <div class="mb-3">
+              <label class="wireframe-label mb-1">Category <span class="text-danger">*</span></label>
+              <select name="category_id" class="form-select rounded-3" required>
+                <option value="">Select Category...</option>
+                <?php
+                $catStmt = $pdo->query("SELECT id, name FROM categories ORDER BY name ASC");
+                while ($c = $catStmt->fetch()) {
+                    $selected = ($c['id'] == $recipe['category_id']) ? 'selected' : '';
+                    echo '<option value="' . $c['id'] . '" ' . $selected . '>' . htmlspecialchars($c['name']) . '</option>';
+                }
+                ?>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label class="wireframe-label mb-1">Recipe Image <span class="text-muted">(Optional - leave blank to keep current image)</span></label>
+              <?php if (!empty($recipe['image_url'])): ?>
+                  <div class="mb-2">
+                      <img src="<?= htmlspecialchars($recipe['image_url']) ?>" alt="Current Image" class="img-thumbnail" style="max-height: 100px;">
+                  </div>
+              <?php endif; ?>
