@@ -23,3 +23,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit;
         } else {
             $error = "Invalid email or password.";
+        }
+    }
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Savory Share</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/wireframe.css">
+</head>
+<body class="bg-light">
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-5">
+        <div class="card shadow-sm border-0 rounded-4 p-4">
+          <div class="text-center mb-4">
+            <a href="../index.php" class="text-decoration-none text-dark fw-bold fs-3">Savory Share</a>
+            <p class="text-muted">Login to your account</p>
+          </div>
+          
+          <?php if ($error): ?>
