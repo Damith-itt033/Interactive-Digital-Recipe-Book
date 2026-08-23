@@ -168,3 +168,58 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                       <img src="<?= htmlspecialchars($recipe['image_url']) ?>" alt="Current Image" class="img-thumbnail" style="max-height: 100px;">
                   </div>
               <?php endif; ?>
+              <input type="file" name="image" class="form-control rounded-3" accept="image/*">
+            </div>
+
+            <div class="mb-3">
+              <label class="wireframe-label mb-1">Ingredients <span class="text-danger">*</span></label>
+              <textarea name="ingredients" class="form-control rounded-3" rows="4" required><?= htmlspecialchars($recipe['ingredients']) ?></textarea>
+            </div>
+
+            <div class="mb-3">
+              <label class="wireframe-label mb-1">Instructions <span class="text-danger">*</span></label>
+              <textarea name="instructions" class="form-control rounded-3" rows="5" required><?= htmlspecialchars($recipe['instructions']) ?></textarea>
+            </div>
+
+            <div class="row g-3 mb-4">
+              <div class="col-md-3">
+                <label class="wireframe-label mb-1">Prep Time (mins)</label>
+                <input type="number" name="prep_time" class="form-control rounded-3" value="<?= htmlspecialchars($recipe['prep_time']) ?>" min="0">
+              </div>
+              <div class="col-md-3">
+                <label class="wireframe-label mb-1">Cook Time (mins)</label>
+                <input type="number" name="cook_time" class="form-control rounded-3" value="<?= htmlspecialchars($recipe['cook_time']) ?>" min="0">
+              </div>
+              <div class="col-md-3">
+                <label class="wireframe-label mb-1">Servings</label>
+                <input type="number" name="servings" class="form-control rounded-3" value="<?= htmlspecialchars($recipe['servings']) ?>" min="1">
+              </div>
+              <div class="col-md-3">
+                <label class="wireframe-label mb-1">Difficulty</label>
+                <select name="difficulty" class="form-select rounded-3">
+                  <option value="Easy" <?= $recipe['difficulty'] == 'Easy' ? 'selected' : '' ?>>Easy</option>
+                  <option value="Medium" <?= $recipe['difficulty'] == 'Medium' ? 'selected' : '' ?>>Medium</option>
+                  <option value="Hard" <?= $recipe['difficulty'] == 'Hard' ? 'selected' : '' ?>>Hard</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-amber btn-lg w-100 py-3 rounded-3 fw-bold fs-6"><i class="fa-solid fa-save me-2"></i>Save Changes</button>
+                <a href="dashboard.php" class="btn btn-outline-secondary btn-lg py-3 rounded-3 fw-bold fs-6 w-25">Cancel</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="bg-white border-top py-4 mt-5">
+    <div class="container text-center text-muted fs-7">
+      <p class="mb-1">Savory Share (Feastify) &copy; 2026 — ICT 1209 Web Technologies Mini Project</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
