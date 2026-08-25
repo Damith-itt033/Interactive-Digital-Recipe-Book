@@ -47,3 +47,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           </div>
           
           <?php if ($error): ?>
+            <div class="alert alert-danger py-2"><?= htmlspecialchars($error) ?></div>
+          <?php endif; ?>
+          
+          <form method="POST">
+            <div class="mb-3">
+              <label class="form-label">Email Address</label>
+              <input type="email" name="email" class="form-control" required>
+            </div>
+            <div class="mb-4">
+              <label class="form-label">Password</label>
+              <input type="password" name="password" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-amber w-100 py-2 fw-bold">Login</button>
+          </form>
+          <div class="text-center mt-3">
+            <small>Don't have an account? <a href="register.php" class="text-decoration-none">Register here</a></small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
