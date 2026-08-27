@@ -73,3 +73,77 @@ $recipes = $stmt->fetchAll();
   </nav>
 
   <main class="container my-5">
+    <div class="d-flex justify-content-between align-items-end mb-4">
+      <div>
+        <h2 class="fw-bold m-0">Full Recipe Directory</h2>
+        <p class="text-muted m-0">Multi-criteria filtering and detailed views. Find perfect meals matching your exact preferences.</p>
+      </div>
+      <span class="badge bg-light text-dark border px-3 py-2 rounded-pill"><i class="fa-solid fa-layer-group me-1 text-warning"></i> Found <?= count($recipes) ?> Recipes</span>
+    </div>
+
+    <div class="row g-4">
+      <!-- Sidebar Filters Block -->
+      <div class="col-lg-3">
+        <div class="bg-white p-4 rounded-4 border">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h6 class="fw-bold m-0"><i class="fa-solid fa-sliders me-2 text-warning"></i>Filters</h6>
+            <a href="dashboard.php" class="text-decoration-none text-muted fs-7">Reset All</a>
+          </div>
+
+          <form action="dashboard.php" method="GET">
+              <div class="mb-4">
+                <label class="wireframe-label mb-2">Meal Category</label>
+                <?php
+                // Fetch categories
+                $catStmt = $pdo->query("SELECT * FROM categories ORDER BY name ASC");
+                while ($c = $catStmt->fetch()):
+                ?>
+                <div class="form-check fs-7 mb-1">
+                  <input class="form-check-input" type="radio" name="category" id="cat_<?= $c['slug'] ?>" value="<?= $c['slug'] ?>" <?= ($category === $c['slug']) ? 'checked' : '' ?> onchange="this.form.submit()">
+                  <label class="form-check-label" for="cat_<?= $c['slug'] ?>"><?= htmlspecialchars($c['name']) ?></label>
+                </div>
+                <?php endwhile; ?>
+              </div>
+
+              <div class="mb-4">
+                <label class="wireframe-label mb-2">Live Search</label>
+                <div class="input-group input-group-sm">
+                    <input type="text" name="q" class="form-control" placeholder="Search..." value="<?= htmlspecialchars($search) ?>">
+                    <button class="btn btn-outline-secondary" type="submit"><i class="fa-solid fa-search"></i></button>
+                </div>
+              </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Main Directory Content Block -->
+      <div class="col-lg-9">
+        <!-- Recipe Matrix Grid -->
+        <div class="row g-4">
+          <?php if (count($recipes) > 0): foreach ($recipes as $recipe): ?>
+          <div class="col-md-6 col-xl-4">
+            <div class="recipe-card h-100">
+              <?php if (!empty($recipe['image_url'])): ?>
+              <div class="position-relative">
+                <img src="<?= htmlspecialchars($recipe['image_url']) ?>" class="recipe-card-img" alt="<?= htmlspecialchars($recipe['title']) ?>">
+                <span class="position-absolute top-0 start-0 m-3 meal-badge badge-<?= htmlspecialchars($recipe['category_slug']) ?>">
+                    <?= strtoupper(htmlspecialchars($recipe['category_name'])) ?>
+                </span>
+              </div>
+              <?php endif; ?>
+              <div class="p-3">
+                <?php if (empty($recipe['image_url'])): ?>
+                <div class="mb-2">
+                  <span class="meal-badge badge-<?= htmlspecialchars($recipe['category_slug']) ?>">
+                      <?= strtoupper(htmlspecialchars($recipe['category_name'])) ?>
+                  </span>
+                </div>
+                <?php endif; ?>
+                <div class="d-flex align-items-center text-warning fs-7 mb-1">
+                  <i class="fa-solid fa-star me-1"></i> 4.5 <span class="text-muted ms-1">(Phase 2)</span>
+                </div>
+                <h6 class="fw-bold mb-2"><?= htmlspecialchars($recipe['title']) ?></h6>
+                <p class="text-muted fs-7 mb-3"><?= htmlspecialchars(substr($recipe['instructions'], 0, 70)) ?>...</p>
+                <div class="d-flex justify-content-between align-items-center pt-2 border-top fs-7 text-muted">
+                  <span><i class="fa-regular fa-clock me-1"></i> <?= htmlspecialchars($recipe['prep_time'] + $recipe['cook_time']) ?> Mins</span>
+                  <button class="btn btn-link text-decoration-none fw-semibold text-warning p-0" data-bs-toggle="modal" data-bs-target="#recipeModal<?= $recipe['id'] ?>">Cook Recipe &rarr;</button>
