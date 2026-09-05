@@ -74,3 +74,77 @@ document.addEventListener('DOMContentLoaded', () => {
       ],
       steps: [
         "Melt dark chocolate and butter over a double boiler until smooth.",
+        "Whisk eggs, egg yolks, and sugar together until pale and thick.",
+        "Fold melted chocolate and flour gently. Pour into buttered ramekins and bake at 200°C for 12 minutes."
+      ]
+    },
+    4: {
+      title: "Mediterranean Grilled Chicken",
+      category: "DINNER",
+      badgeClass: "bg-primary text-white",
+      image: "https://images.unsplash.com/photo-1532550907401-a500c9a57435?auto=format&fit=crop&w=800&q=80",
+      description: "Herb-marinated grilled chicken breasts infused with fresh garlic, rosemary, and olive oil.",
+      ingredients: [
+        "4 Boneless chicken breasts",
+        "3 tbsp Olive oil & lemon zest",
+        "3 cloves Garlic (minced)",
+        "1 tbsp Fresh rosemary & oregano",
+        "Salt & cracked black pepper"
+      ],
+      steps: [
+        "Whisk olive oil, lemon zest, garlic, rosemary, salt, and pepper in a marinade bowl.",
+        "Marinate chicken breasts for at least 30 minutes.",
+        "Grill over medium-high heat for 6-7 minutes per side until internal temperature reaches 75°C."
+      ]
+    }
+  };
+
+  // JS Feature 4: Modal Event Handling & Dynamic Content Injection
+  const openRecipeButtons = document.querySelectorAll('.open-recipe-btn');
+  const recipeModalEl = document.getElementById('recipeModal');
+
+  if (recipeModalEl && openRecipeButtons.length > 0) {
+    const bsModal = new bootstrap.Modal(recipeModalEl);
+
+    openRecipeButtons.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const id = btn.getAttribute('data-recipe-id');
+        const data = recipeDataStore[id];
+
+        if (data) {
+          document.getElementById('modalRecipeTitle').textContent = data.title;
+          document.getElementById('modalRecipeImg').src = data.image;
+          document.getElementById('modalRecipeImg').alt = data.title;
+
+          const badgeEl = document.getElementById('modalRecipeBadge');
+          badgeEl.textContent = data.category;
+          badgeEl.className = `badge ${data.badgeClass} mb-2`;
+
+          document.getElementById('modalRecipeDesc').textContent = data.description;
+
+          // Render Ingredients
+          const ingrUl = document.getElementById('modalRecipeIngredients');
+          ingrUl.innerHTML = '';
+          data.ingredients.forEach(item => {
+            const li = document.createElement('li');
+            li.textContent = item;
+            ingrUl.appendChild(li);
+          });
+
+          // Render Steps
+          const stepsOl = document.getElementById('modalRecipeSteps');
+          stepsOl.innerHTML = '';
+          data.steps.forEach(step => {
+            const li = document.createElement('li');
+            li.textContent = step;
+            stepsOl.appendChild(li);
+          });
+
+          bsModal.show();
+        }
+      });
+    });
+  }
+
+});
