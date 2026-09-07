@@ -17,21 +17,3 @@ In the first phase, we only focused on the design of the website.
 
 ## What we did in Phase 2 (Backend & Database)
 In the second phase, we made the website actually work by adding a backend and a database.
-* We used **PHP** for the backend coding.
-* We created a **MySQL database** using XAMPP to store the recipes, user accounts, and messages.
-* Now, the recipes load directly from the database instead of plain HTML.
-* We also added a Login and Registration system so users can create their own accounts safely.
-* When someone sends a message through our Contact page, it now saves directly to the database.
-
-## Technologies We Used
-* HTML, CSS, Bootstrap 5
-* JavaScript
-* PHP & MySQL
-* XAMPP
-
-## How to test our project locally
-1. Download and install XAMPP.
-2. Put our project folder inside the `htdocs` folder in XAMPP (usually `C:\xampp\htdocs\`).
-3. Open XAMPP and start Apache and MySQL.
-4. Go to `http://localhost/phpmyadmin` and import our database SQL file.
-5. Go to your browser and type `http://localhost/Your-Folder-Name` to view the website.
